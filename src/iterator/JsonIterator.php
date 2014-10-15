@@ -5,7 +5,7 @@
  * @copyright 2014 Etienne Lamoureux
  * @license http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
  */
-namespace Crystalgorithm\DurmandScriptorium\utils;
+namespace Crystalgorithm\PhpJsonIterator\iterator;
 
 use Iterator;
 
@@ -17,16 +17,17 @@ class JsonIterator implements Iterator
     protected $cursorPosition;
     protected $nextCursorPosition;
 
-    public function __construct($jsonString, $firstTopLevelString = null, $jsonStringHasSquareBrackets = false)
+    public function __construct($jsonString, array $options = null)
     {
 	$this->jsonString = $jsonString;
 
-	if ($jsonStringHasSquareBrackets)
+	$this->setDefaultOptions($options);
+	$this->needleFactory($options['firstTopLevelString']);
+
+	if ($options['jsonHasSquareBrackets'])
 	{
 	    $this->jsonString = substr($this->jsonString, 1, -1);
 	}
-
-	$this->needleFactory($firstTopLevelString);
     }
 
     /**
@@ -98,6 +99,19 @@ class JsonIterator implements Iterator
 	}
 
 	return $this->nextCursorPosition;
+    }
+
+    protected function setDefaultOptions(array &$options)
+    {
+	if (!isset($options['jsonHasSquareBrackets']))
+	{
+	    $options['jsonHasSquareBrackets'] = TRUE;
+	}
+
+	if (!isset($options['firstTopLevelString']))
+	{
+	    $options['firstTopLevelString'] = null;
+	}
     }
 
     public function __destruct()

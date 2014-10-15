@@ -12,12 +12,12 @@ class JsonFileIterator extends JsonIterator
 
     protected $jsonFileHandle;
 
-    public function __construct($jsonFileHandle, $firstTopLevelString = null, $jsonStringHasSquareBrackets = true)
+    public function __construct($jsonFileHandle, array $options = null)
     {
 	$this->jsonFileHandle = $jsonFileHandle;
 
 	$jsonString = file_get_contents($jsonFileHandle);
-	parent::__construct($jsonString, $firstTopLevelString, $jsonStringHasSquareBrackets);
+	parent::__construct($jsonString, $options);
     }
 
     public function __destruct()
