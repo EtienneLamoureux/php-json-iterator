@@ -7,6 +7,10 @@
  */
 namespace Crystalgorithm\PhpJsonIterator;
 
+use Crystalgorithm\PhpJsonIterator\iterator\JsonFileIterator;
+use Crystalgorithm\PhpJsonIterator\iterator\JsonFilesIterator;
+use Crystalgorithm\PhpJsonIterator\iterator\JsonIterator;
+
 class JsonIteratorFactory
 {
 
@@ -17,7 +21,7 @@ class JsonIteratorFactory
 
     public static function buildJsonFileIterator($jsonFileHandle, array $options = null)
     {
-	return new JsonFilesIterator($jsonFileHandle, $options);
+	return new JsonFileIterator($jsonFileHandle, $options);
     }
 
     public static function buildJsonFilesIterator($jsonFileHandles, array $options = null)
