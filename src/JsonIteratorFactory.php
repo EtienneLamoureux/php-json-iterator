@@ -7,9 +7,9 @@
  */
 namespace Crystalgorithm\PhpJsonIterator;
 
-use Crystalgorithm\PhpJsonIterator\iterator\JsonFileIterator;
-use Crystalgorithm\PhpJsonIterator\iterator\JsonFilesIterator;
-use Crystalgorithm\PhpJsonIterator\iterator\JsonIterator;
+use Crystalgorithm\PhpJsonIterator\Iterators\JsonFileIterator;
+use Crystalgorithm\PhpJsonIterator\Iterators\JsonFilesIterator;
+use Crystalgorithm\PhpJsonIterator\Iterators\JsonIterator;
 
 class JsonIteratorFactory
 {
