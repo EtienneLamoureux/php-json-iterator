@@ -1,6 +1,6 @@
 {
     "name": "crystalgorithm/php-json-iterator",
-    "description": "PHP package to iterate through various JSON formats",
+    "description": "PHP package to iterate through large collections of JSON objects",
     "keywords": ["php", "json", "iterator"],
     "homepage": "https://github.com/EtienneLamoureux/php-json-iterator",
     "license": "BSD-3-Clause",
