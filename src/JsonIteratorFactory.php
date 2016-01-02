@@ -24,7 +24,7 @@ class JsonIteratorFactory
 	return new JsonFileIterator($jsonFileHandle, $options);
     }
 
-    public static function buildJsonFilesIterator($jsonFileHandles, array $options = null)
+    public static function buildJsonFilesIterator(array $jsonFileHandles, array $options = null)
     {
 	return new JsonFilesIterator($jsonFileHandles, $options);
     }
