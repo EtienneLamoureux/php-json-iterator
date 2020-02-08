@@ -12,12 +12,12 @@ class JsonFileIterator extends JsonIterator
 
     protected $jsonFileHandle;
 
-    public function __construct(NeedleFactory $needleFactory, $jsonFileHandle, array $options = null)
+    public function __construct($jsonFileHandle, array $options = null)
     {
 	$this->jsonFileHandle = $jsonFileHandle;
 
 	$jsonString = file_get_contents($jsonFileHandle);
-	parent::__construct($needleFactory, $jsonString, $options);
+	parent::__construct($jsonString, $options);
     }
 
     public function __destruct()

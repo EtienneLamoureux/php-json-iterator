@@ -17,12 +17,12 @@ class JsonIterator implements Iterator
     protected $cursorPosition;
     protected $nextCursorPosition;
 
-    public function __construct(NeedleFactory $needleFactory, $jsonString, array $options = null)
+    public function __construct($jsonString, array $options = null)
     {
 	$this->jsonString = $jsonString;
 
 	$this->setDefaultOptions($options);
-	$this->needle = $needleFactory->build();
+	$this->needleFactory($options['firstTopLevelString']);
 
 	if ($options['jsonHasSquareBrackets'])
 	{
@@ -77,6 +77,16 @@ class JsonIterator implements Iterator
 	}
 
 	return true;
+    }
+
+    protected function needleFactory($firstTopLevelString = null)
+    {
+	$this->needle = ',{';
+
+	if ($firstTopLevelString != null)
+	{
+	    $this->needle .= '"' . $firstTopLevelString . '"';
+	}
     }
 
     protected function getNextCursorPosition()

@@ -12,13 +12,13 @@ use AppendIterator;
 class JsonFilesIterator extends AppendIterator
 {
 
-    public function __construct(NeedleFactory $needleFactory, array $jsonFileHandles, array $options = null)
+    public function __construct($jsonFileHandles, array $options = null)
     {
 	parent::__construct();
 
 	foreach ($jsonFileHandles as $jsonFileHandle)
 	{
-	    $this->append(new JsonFileIterator($needleFactory, $jsonFileHandle, $options));
+	    $this->append(new JsonFileIterator($jsonFileHandle, $options));
 	}
     }
 
