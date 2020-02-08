@@ -22,7 +22,7 @@ class JsonIterator implements Iterator
 	$this->jsonString = $jsonString;
 
 	$this->setDefaultOptions($options);
-	$this->needleFactory($options['firstTopLevelString']);
+	$this->buildNeedle($options['firstTopLevelString']);
 
 	if ($options['jsonHasSquareBrackets'])
 	{
@@ -79,7 +79,7 @@ class JsonIterator implements Iterator
 	return true;
     }
 
-    protected function needleFactory($firstTopLevelString = null)
+    protected function buildNeedle($firstTopLevelString = null)
     {
 	$this->needle = ',{';
 
