@@ -1,4 +1,5 @@
-PHP JSON Iterator
-=================
+# PHP JSON Iterator
+PHP package to iterate through large collections of JSON objects
 
-PHP package to iterate through various JSON formats
+## Usage
+See the [test cases](/blob/master/tests/Iterators/JsonIteratorTest.php).
