@@ -105,7 +105,7 @@ class JsonIterator implements Iterator
     {
 	if (!isset($options['jsonHasSquareBrackets']))
 	{
-	    $options['jsonHasSquareBrackets'] = TRUE;
+	    $options['jsonHasSquareBrackets'] = true;
 	}
 
 	if (!isset($options['firstTopLevelString']))
