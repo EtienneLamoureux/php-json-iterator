@@ -17,7 +17,7 @@ class JsonIterator implements Iterator
     protected $cursorPosition;
     protected $nextCursorPosition;
 
-    public function __construct($jsonString, array $options = null)
+    public function __construct($jsonString, array $options)
     {
 	$this->jsonString = $jsonString;
 

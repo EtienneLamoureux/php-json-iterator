@@ -14,17 +14,17 @@ use Crystalgorithm\PhpJsonIterator\Iterators\JsonIterator;
 class JsonIteratorFactory
 {
 
-    public static function buildJsonIterator($json, array $options = null)
+    public static function buildJsonIterator($json, array $options = array())
     {
 	return new JsonIterator($json, $options);
     }
 
-    public static function buildJsonFileIterator($jsonFileHandle, array $options = null)
+    public static function buildJsonFileIterator($jsonFileHandle, array $options = array())
     {
 	return new JsonFileIterator($jsonFileHandle, $options);
     }
 
-    public static function buildJsonFilesIterator($jsonFileHandles, array $options = null)
+    public static function buildJsonFilesIterator($jsonFileHandles, array $options = array())
     {
 	return new JsonFilesIterator($jsonFileHandles, $options);
     }
