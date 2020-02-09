@@ -22,9 +22,42 @@ final class JsonIteratorTest extends PHPUnit_Framework_TestCase {
         $this->counter = 0;
     }
 
-    public function testGivenFlatJsonObjectsThenParseOneByOne() {
+    /**
+     * If you're dealing with flat JSON objects (no nested objects), you can 
+     * build the iterator with no addiitonal parameters.
+     */
+    public function testGivenJsonArrayOfFlatObjectsThenParseOneByOne() {
         $json = $this::buildTestJson(5, self::FLAT_JSON_OBJECT_AS_STRING);
         $iterator = JsonIteratorFactory::buildJsonIterator($json);
+
+        $this->goThroughIterator($iterator);
+
+        $this->assertEquals(5, $this->counter);
+    }
+
+    /**
+     * If you're dealing with JSON objects that contain nested JSON objects, 
+     * you have to provide the first key of the top-level object as an 
+     * additional parameter. 
+     * If your collection of objects do not have a standard schema, or fields 
+     * are listed in a random order, this project cannot help you.
+     */
+    public function testGivenJsonArrayOfNestedObjectsThenParseOneByOne() {
+        $json = $this::buildTestJson(5, self::NESTED_JSON_OBJECT_AS_STRING);
+        $iterator = JsonIteratorFactory::buildJsonIterator($json, array("firstTopLevelString" => "foo"));
+
+        $this->goThroughIterator($iterator);
+
+        $this->assertEquals(5, $this->counter);
+    }
+
+    /**
+     * The iterator supports incorrect JSON arrays (with no start nor end brackets).
+     */
+    public function testCommaSeparatedJsonObjectsThenParseOneByOne() {
+        $jsonObjects = array_fill(0, 5, self::FLAT_JSON_OBJECT_AS_STRING);
+        $json = implode(",", $jsonObjects);
+        $iterator = JsonIteratorFactory::buildJsonIterator($json, array("jsonHasSquareBrackets" => false));
 
         $this->goThroughIterator($iterator);
 
@@ -35,7 +68,7 @@ final class JsonIteratorTest extends PHPUnit_Framework_TestCase {
         $jsonObjects = array_fill(0, $nbObjects, $jsonObject);
         $json = implode(",", $jsonObjects);
 
-        return $json;
+        return "[" . $json . "]";
     }
 
     protected function goThroughIterator($iterator) {
