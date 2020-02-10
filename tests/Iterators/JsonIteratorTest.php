@@ -73,8 +73,8 @@ final class JsonIteratorTest extends PHPUnit_Framework_TestCase {
 
     protected function goThroughIterator($iterator) {
         foreach ($iterator as $parsedJsonObject) {
-            // Here you can do something with $parsedJsonObject as an array, 
-            // has it had gone through json_decode already
+            // Here you can do something with $parsedJsonObject as an array. 
+            // It has been "json_decoded" already.
             //print_r($parsedJsonObject);
             $this->counter++;
         }
