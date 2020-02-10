@@ -39,7 +39,7 @@ final class JsonIteratorTest extends PHPUnit_Framework_TestCase {
      * If you're dealing with JSON objects that contain nested JSON objects, 
      * you have to provide the first key of the top-level object as an 
      * additional parameter. 
-     * If your collection of objects do not have a standard schema, or fields 
+     * If your collection of objects does not have a standard schema, or fields 
      * are listed in a random order, this project cannot help you.
      */
     public function testGivenJsonArrayOfNestedObjectsThenParseOneByOne() {
